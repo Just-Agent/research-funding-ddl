@@ -1,0 +1,34 @@
+{
+  "generatedAt": "2026-05-23T23:44:24.295Z",
+  "mode": "template-source-reachability",
+  "topics": [
+    {
+      "topicId": "nsfc-ddl",
+      "sources": [
+        {
+          "id": "nsfc-official-notices",
+          "url": "https://www.nsfc.gov.cn/p1/3381/2824/99667.html",
+          "parser": "nsfc-notice-list",
+          "accessMode": "public",
+          "status": "reachable",
+          "httpStatus": 200
+        },
+        {
+          "id": "nsfc-isis",
+          "url": "https://grants.nsfc.gov.cn/",
+          "parser": "manual-system-link",
+          "accessMode": "manual_verified",
+          "status": "manual_or_authorized_source"
+        },
+        {
+          "id": "nsfc-project-guide",
+          "url": "https://www.nsfc.gov.cn/p1/2931/4077/2026nxmzn.html",
+          "parser": "manual-guide-page",
+          "accessMode": "public",
+          "status": "reachable",
+          "httpStatus": 200
+        }
+      ]
+    }
+  ]
+}

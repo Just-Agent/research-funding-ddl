@@ -1,0 +1,38 @@
+{
+  "topicId": "nsfc-ddl",
+  "sourceFamilies": [
+    {
+      "id": "nsfc-official-notices",
+      "name": "国家自然科学基金委员会通知公告",
+      "url": "https://www.nsfc.gov.cn/p1/3381/2824/99667.html",
+      "type": "official",
+      "accessMode": "public",
+      "parser": "nsfc-notice-list",
+      "markers": ["年度国家自然科学基金项目申请", "评审结果", "结题"],
+      "refreshCadence": "weekly",
+      "coverageNote": "用于发现年度申请、结题、评审结果和复审相关官方通告。"
+    },
+    {
+      "id": "nsfc-isis",
+      "name": "科学基金网络信息系统",
+      "url": "https://grants.nsfc.gov.cn/",
+      "type": "official-system",
+      "accessMode": "manual_verified",
+      "parser": "manual-system-link",
+      "markers": ["申请", "查询", "ISIS"],
+      "refreshCadence": "manual",
+      "coverageNote": "作为申请、查询和复审入口；具体项目状态可能需要登录，生产数据只采公开通告。"
+    },
+    {
+      "id": "nsfc-project-guide",
+      "name": "国家自然科学基金项目指南",
+      "url": "https://www.nsfc.gov.cn/p1/2931/4077/2026nxmzn.html",
+      "type": "official-guide",
+      "accessMode": "public",
+      "parser": "manual-guide-page",
+      "markers": ["项目指南", "集中接收", "申请"],
+      "refreshCadence": "annual",
+      "coverageNote": "年度项目指南用于补充项目类型、申请条件和特殊项目时间节点。"
+    }
+  ]
+}

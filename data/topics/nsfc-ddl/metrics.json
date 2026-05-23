@@ -1,0 +1,14 @@
+[
+  {
+    "id": "nsfc-funding-metric-placeholder",
+    "topicId": "nsfc-ddl",
+    "type": "metricSnapshot",
+    "metric": "funding_statistics_plan",
+    "value": "planned",
+    "asOfDate": "2026-05-24",
+    "source": "国家自然科学基金委员会",
+    "url": "https://www.nsfc.gov.cn/",
+    "accessMode": "public",
+    "scopeNote": "预留年度项目数、资助率、学部/项目类型统计入口；未导入官方年度统计前不展示具体数值。"
+  }
+]
