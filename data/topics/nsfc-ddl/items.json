@@ -1355,11 +1355,41 @@
       "nsfc-2025-application-window",
       "nsfc-2026-application-window"
     ],
+  "estimatedNextWindow": {
+    "start": "2027-03-01",
+    "end": "2027-03-20"
+  },
+  "releaseCadence": {
+    "algorithmVersion": "just-ddl-calendar-window-v1",
+    "sampleSize": 2,
+    "basisEvents": [
+      "nsfc-2025-application-window",
+      "nsfc-2026-application-window"
+    ],
+    "dates": [
+      "2025-03-20",
+      "2026-03-20"
+    ],
+    "intervals": [
+      365
+    ],
+    "medianDays": 365,
+    "meanDays": 365,
+    "minDays": 365,
+    "maxDays": 365,
+    "rollForwardCount": 0,
+    "windowRule": {
+      "type": "annual_month_day_range",
+      "targetYear": 2027,
+      "startMonthDay": "03-01",
+      "endMonthDay": "03-20"
+    },
     "estimatedNextWindow": {
       "start": "2027-03-01",
       "end": "2027-03-20"
-    },
-    "forecastBasis": "2025 与 2026 年官方通告均为 3 月 1 日开始集中接收、3 月 20 日 16 时截止；2027 年实际安排仍以 NSFC 官方通告为准。",
+    }
+  },
+  "forecastBasis": "2025 与 2026 年官方通告均为 3 月 1 日开始集中接收、3 月 20 日 16 时截止；2027 年实际安排仍以 NSFC 官方通告为准。",
     "confidence": "medium",
     "url": "https://www.nsfc.gov.cn/",
     "source": "国家自然科学基金委员会",
@@ -1390,11 +1420,41 @@
       "nsfc-2024-review-result-query",
       "nsfc-2025-review-result-query"
     ],
+  "estimatedNextWindow": {
+    "start": "2026-08-20",
+    "end": "2026-09-05"
+  },
+  "releaseCadence": {
+    "algorithmVersion": "just-ddl-seasonal-window-v1",
+    "sampleSize": 2,
+    "basisEvents": [
+      "nsfc-2024-review-result-query",
+      "nsfc-2025-review-result-query"
+    ],
+    "dates": [
+      "2024-08-23",
+      "2025-08-27"
+    ],
+    "intervals": [
+      369
+    ],
+    "medianDays": 369,
+    "meanDays": 369,
+    "minDays": 369,
+    "maxDays": 369,
+    "rollForwardCount": 0,
+    "windowRule": {
+      "type": "annual_observation_window",
+      "targetYear": 2026,
+      "startMonthDay": "08-20",
+      "endMonthDay": "09-05"
+    },
     "estimatedNextWindow": {
       "start": "2026-08-20",
       "end": "2026-09-05"
-    },
-    "forecastBasis": "2024 年和 2025 年集中接收申请项目评审结果均在 8 月下旬公布；2026 年评审结果实际发布时间必须等待 NSFC 官方通告。",
+    }
+  },
+  "forecastBasis": "2024 年和 2025 年集中接收申请项目评审结果均在 8 月下旬公布；2026 年评审结果实际发布时间必须等待 NSFC 官方通告。",
     "confidence": "medium",
     "url": "https://www.nsfc.gov.cn/",
     "source": "国家自然科学基金委员会",
