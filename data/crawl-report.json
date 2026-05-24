@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-24T04:31:35.215Z",
+  "generatedAt": "2026-05-24T05:57:35.174Z",
   "mode": "template-source-reachability",
   "topics": [
     {
@@ -24,6 +24,22 @@
           "id": "nsfc-project-guide",
           "url": "https://www.nsfc.gov.cn/p1/2931/4077/2026nxmzn.html",
           "parser": "manual-guide-page",
+          "accessMode": "public",
+          "status": "reachable",
+          "httpStatus": 200
+        },
+        {
+          "id": "nsfc-2026-preliminary-review",
+          "url": "https://www.nsfc.gov.cn/p1/3381/2822/122579.html",
+          "parser": "manual-notice-page",
+          "accessMode": "public",
+          "status": "reachable",
+          "httpStatus": 200
+        },
+        {
+          "id": "nsfc-review-results",
+          "url": "https://www.nsfc.gov.cn/p1/3381/2824/66854.html",
+          "parser": "manual-notice-page",
           "accessMode": "public",
           "status": "reachable",
           "httpStatus": 200

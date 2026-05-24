@@ -182,13 +182,28 @@
         align-items: start;
       }
       .timeline-date { color: var(--green); font-weight: 950; }
+      .type-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 12px;
+        margin-top: 16px;
+      }
+      .type-card {
+        border: 1px solid #dbeafe;
+        border-radius: 20px;
+        background: #ffffff;
+        padding: 16px;
+        min-height: 154px;
+      }
+      .type-card h3 { margin: 0 0 8px; font-size: 18px; line-height: 1.25; }
+      .type-card p { margin: 0; color: var(--muted); line-height: 1.55; }
       .footer {
         padding: 30px 0 42px;
         color: var(--muted);
         border-top: 1px solid var(--line);
       }
       @media (max-width: 860px) {
-        .hero, .grid, .stats { grid-template-columns: 1fr; }
+        .hero, .grid, .stats, .type-grid { grid-template-columns: 1fr; }
         .timeline-row { grid-template-columns: 1fr; gap: 6px; }
       }
     </style>
@@ -229,6 +244,12 @@
       </section>
 
       <section class="section">
+        <h2>2026 集中接收项目门类</h2>
+        <p class="muted">这些项目在 2026 年度通告中进入同一集中接收窗口。具体申请条件、限项和材料要求仍需逐项查看年度指南与项目指南。</p>
+        <div class="type-grid" id="projectTypes"></div>
+      </section>
+
+      <section class="section">
         <h2>官方历史轨迹</h2>
         <div class="panel timeline" id="timeline"></div>
       </section>
@@ -248,6 +269,9 @@
       const official = byType("officialDeadline");
       const history = byType("historyEvent").sort((a, b) => new Date(b.date) - new Date(a.date));
       const forecasts = byType("forecastWindow");
+      const projectTypes = history
+        .filter((item) => item.subtopic === "nsfc-project-types")
+        .sort((a, b) => a.title.localeCompare(b.title, "zh-CN"));
       const nextOfficial = official.sort((a, b) => new Date(a.deadline) - new Date(b.deadline))[0];
 
       function daysLeft(date) {
@@ -312,6 +336,16 @@
       }
 
       document.querySelector("#cards").innerHTML = [...official, ...forecasts].map(renderCard).join("");
+      document.querySelector("#projectTypes").innerHTML = projectTypes.map((item) => `
+        <article class="type-card">
+          <h3>${item.title}</h3>
+          <p>${item.description}</p>
+          <div class="meta">
+            ${(item.tags || []).slice(0, 3).map((tag) => `<span class="tag">${tag}</span>`).join("")}
+          </div>
+          <a class="pill" href="${item.url}" target="_blank" rel="noreferrer">项目指南 / 通告</a>
+        </article>
+      `).join("");
       document.querySelector("#timeline").innerHTML = history.map((item) => `
         <div class="timeline-row">
           <div class="timeline-date">${item.date}</div>
