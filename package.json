@@ -6,6 +6,9 @@
   "scripts": {
     "crawl": "node scripts/crawl-sources.mjs",
     "validate": "node scripts/validate-data.mjs",
-    "link-check": "node scripts/link-check.mjs"
+    "link-check": "node scripts/link-check.mjs",
+    "export:public": "node scripts/export-public-data.mjs",
+    "validate:public": "node scripts/validate-public-data.mjs",
+    "build": "npm run validate && npm run export:public && npm run validate:public"
   }
 }

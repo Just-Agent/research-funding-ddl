@@ -49,7 +49,9 @@ Hub 侧注册为专题族：
   site: "https://just-agent.github.io/research-funding-ddl/",
   sourceMode: "cluster",
   clusterId: "research-funding-ddl",
-  dataUrl: "data/topics/nsfc-ddl/items.json",
-  metricsUrl: "data/topics/nsfc-ddl/metrics.json"
+  dataUrl: "public-data/topics/nsfc-ddl/items.json",
+  metricsUrl: "public-data/topics/nsfc-ddl/metrics.json"
 }
 ```
+
+`data/` 保留维护字段供 validator 和 crawler 使用；Pages 与 Hub 只消费 `public-data/`，其中 `forecastBasis`、`scopeNote`、`accessMode`、`parser` 等维护字段会被导出脚本剥离。

@@ -288,10 +288,10 @@
 
     <script type="module">
       const [items, sources] = await Promise.all([
-        fetch("./data/topics/nsfc-ddl/items.json").then((r) => r.json()),
-        fetch("./data/topics/nsfc-ddl/sources.json").then((r) => r.json())
+        fetch("./public-data/topics/nsfc-ddl/items.json").then((r) => r.json()),
+        fetch("./public-data/topics/nsfc-ddl/sources.json").then((r) => r.json())
       ]);
-      const metrics = await fetch("./data/topics/nsfc-ddl/metrics.json").then((r) => r.json()).catch(() => []);
+      const metrics = await fetch("./public-data/topics/nsfc-ddl/metrics.json").then((r) => r.json()).catch(() => []);
 
       const byType = (type) => items.filter((item) => item.type === type);
       const official = byType("officialDeadline");
@@ -315,7 +315,7 @@
       ].map(([label, value]) => `<div class="stat"><strong>${value}</strong><span>${label}</span></div>`).join("");
 
       function sourceAudienceLabel(source) {
-        return source.accessMode === "public" ? "公开来源" : "授权/核验来源";
+        return source.sourceLabel || "来源";
       }
 
       document.querySelector("#sources").innerHTML = sources.sourceFamilies.map((source) => `
@@ -331,7 +331,7 @@
       }
 
       function publicForecastText(item) {
-        if (!item.forecastBasis) return "";
+        if (item.type !== "forecastWindow") return "";
         return "预测依据来自已公开的官方历史节点，实际时间以官方公告为准。";
       }
 

@@ -1,0 +1,71 @@
+{
+  "topicId": "nsfc-ddl",
+  "sourceFamilies": [
+    {
+      "sourceLabel": "公开来源",
+      "id": "nsfc-official-notices",
+      "name": "国家自然科学基金委员会通知公告",
+      "url": "https://www.nsfc.gov.cn/p1/3381/2824/99667.html",
+      "type": "official",
+      "markers": [
+        "年度国家自然科学基金项目申请",
+        "评审结果",
+        "结题"
+      ],
+      "refreshCadence": "weekly"
+    },
+    {
+      "sourceLabel": "人工核验来源",
+      "id": "nsfc-isis",
+      "name": "科学基金网络信息系统",
+      "url": "https://grants.nsfc.gov.cn/",
+      "type": "official-system",
+      "markers": [
+        "申请",
+        "查询",
+        "ISIS"
+      ],
+      "refreshCadence": "manual"
+    },
+    {
+      "sourceLabel": "公开来源",
+      "id": "nsfc-project-guide",
+      "name": "国家自然科学基金项目指南",
+      "url": "https://www.nsfc.gov.cn/p1/2931/4077/2026nxmzn.html",
+      "type": "official-guide",
+      "markers": [
+        "项目指南",
+        "集中接收",
+        "申请"
+      ],
+      "refreshCadence": "annual"
+    },
+    {
+      "sourceLabel": "公开来源",
+      "id": "nsfc-2026-preliminary-review",
+      "name": "2026 年度申请项目初审结果通告",
+      "url": "https://www.nsfc.gov.cn/p1/3381/2822/122579.html",
+      "type": "official-notice",
+      "markers": [
+        "初审结果",
+        "不予受理",
+        "复审申请",
+        "6月5日前"
+      ],
+      "refreshCadence": "annual"
+    },
+    {
+      "sourceLabel": "公开来源",
+      "id": "nsfc-review-results",
+      "name": "国家自然科学基金评审结果通告",
+      "url": "https://www.nsfc.gov.cn/p1/3381/2824/66854.html",
+      "type": "official-notice",
+      "markers": [
+        "评审结果",
+        "复审申请",
+        "查询"
+      ],
+      "refreshCadence": "annual"
+    }
+  ]
+}
