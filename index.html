@@ -262,9 +262,13 @@
         ["下一节点", nextOfficial ? `${daysLeft(nextOfficial.deadline)} 天` : "待公告"]
       ].map(([label, value]) => `<div class="stat"><strong>${value}</strong><span>${label}</span></div>`).join("");
 
+      function sourceAudienceLabel(source) {
+        return source.accessMode === "public" ? "公开来源" : "授权/核验来源";
+      }
+
       document.querySelector("#sources").innerHTML = sources.sourceFamilies.map((source) => `
         <a class="source" href="${source.url}" target="_blank" rel="noreferrer">
-          <span>${source.name}</span><span>${source.accessMode}</span>
+          <span>${source.name}</span><span>${sourceAudienceLabel(source)}</span>
         </a>
       `).join("");
 
@@ -272,6 +276,11 @@
         if (item.type === "forecastWindow") return "forecast";
         if (item.type === "historyEvent") return "history";
         return "";
+      }
+
+      function publicForecastText(item) {
+        if (!item.forecastBasis) return "";
+        return "预测依据来自已公开的官方历史节点，实际时间以官方公告为准。";
       }
 
       function renderCard(item) {
@@ -286,7 +295,7 @@
             <div class="box"><strong>${item.estimatedNextWindow.start}</strong><span>预测起点</span></div>
             <div class="box"><strong>${item.estimatedNextWindow.end}</strong><span>预测终点</span></div>
           </div>
-          <p class="muted">${item.forecastBasis}</p>
+          <p class="muted">${publicForecastText(item)}</p>
         ` : "";
         return `
           <article class="card ${tagClass(item)}">
