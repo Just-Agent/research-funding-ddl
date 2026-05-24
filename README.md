@@ -19,7 +19,7 @@
 - `officialDeadline`：官方未来或已发生的明确节点。
 - `historyEvent`：官方历史节点，用于时间线和节奏分析。
 - `forecastWindow`：基于官方历史节点计算的预测窗口，不进入官方倒计时统计。
-- `metricSnapshot`：预留给资助率、项目数量等年度统计，必须注明口径。
+- `metricSnapshot`：年度申请规模、受理数、已公布资助数和公开比例等指标，必须注明口径。
 
 ## 当前覆盖
 
@@ -28,6 +28,7 @@
 - 当前版本已经拆出 2026 集中接收项目门类：面上项目、青年科学基金 C/B/A 类、地区科学基金、重点项目、创新研究群体、卓越研究群体、重点国际合作、外国学者研究基金、合作创新研究团队、重大科研仪器、联合基金、重大研究计划和数学天元基金等。
 - 同步维护管理节点：进展报告、结题电子版/纸质材料、年度管理报告、初审结果、不予受理复审和包干制备案。
 - 评审结果预测只使用官方历史公布节点，显示为预测窗口，不进入正式倒计时。
+- 指标轨迹已接入官方公开通告：2024 年集中接收申请/受理/已公布资助规模，以及 2026 年集中接收初审申请/受理/不予受理规模。
 
 ## Commands
 
@@ -48,6 +49,7 @@ Hub 侧注册为专题族：
   site: "https://just-agent.github.io/research-funding-ddl/",
   sourceMode: "cluster",
   clusterId: "research-funding-ddl",
-  dataUrl: "data/topics/nsfc-ddl/items.json"
+  dataUrl: "data/topics/nsfc-ddl/items.json",
+  metricsUrl: "data/topics/nsfc-ddl/metrics.json"
 }
 ```

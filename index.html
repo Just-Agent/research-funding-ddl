@@ -188,6 +188,27 @@
         gap: 12px;
         margin-top: 16px;
       }
+      .metrics-grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 12px;
+        margin-top: 16px;
+      }
+      .metric-card {
+        border: 1px solid #dbeafe;
+        border-radius: 20px;
+        background: #ffffff;
+        padding: 18px;
+      }
+      .metric-card strong {
+        display: block;
+        margin: 8px 0 2px;
+        font-size: 28px;
+      }
+      .metric-card span {
+        color: var(--muted);
+        font-weight: 850;
+      }
       .type-card {
         border: 1px solid #dbeafe;
         border-radius: 20px;
@@ -203,7 +224,7 @@
         border-top: 1px solid var(--line);
       }
       @media (max-width: 860px) {
-        .hero, .grid, .stats, .type-grid { grid-template-columns: 1fr; }
+        .hero, .grid, .stats, .type-grid, .metrics-grid { grid-template-columns: 1fr; }
         .timeline-row { grid-template-columns: 1fr; gap: 6px; }
       }
     </style>
@@ -250,6 +271,12 @@
       </section>
 
       <section class="section">
+        <h2>申请规模与资助轨迹</h2>
+        <p class="muted">指标只采用官方公开通告或由通告数字计算的公开比例。不同年份口径可能不同，页面会保留年份和来源，避免把初审、复审和最终资助混成一个数。</p>
+        <div class="metrics-grid" id="metrics"></div>
+      </section>
+
+      <section class="section">
         <h2>官方历史轨迹</h2>
         <div class="panel timeline" id="timeline"></div>
       </section>
@@ -264,6 +291,7 @@
         fetch("./data/topics/nsfc-ddl/items.json").then((r) => r.json()),
         fetch("./data/topics/nsfc-ddl/sources.json").then((r) => r.json())
       ]);
+      const metrics = await fetch("./data/topics/nsfc-ddl/metrics.json").then((r) => r.json()).catch(() => []);
 
       const byType = (type) => items.filter((item) => item.type === type);
       const official = byType("officialDeadline");
@@ -345,6 +373,13 @@
           </div>
           <a class="pill" href="${item.url}" target="_blank" rel="noreferrer">项目指南 / 通告</a>
         </article>
+      `).join("");
+      document.querySelector("#metrics").innerHTML = metrics.map((metric) => `
+        <a class="metric-card" href="${metric.url}" target="_blank" rel="noreferrer">
+          <span>${metric.year || metric.asOfDate}</span>
+          <strong>${Number(metric.value).toLocaleString("zh-CN")}${metric.unit || ""}</strong>
+          <span>${metric.displayName || metric.metric}</span>
+        </a>
       `).join("");
       document.querySelector("#timeline").innerHTML = history.map((item) => `
         <div class="timeline-row">
