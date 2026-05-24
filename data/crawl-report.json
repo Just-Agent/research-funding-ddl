@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-24T19:22:00.738Z",
+  "generatedAt": "2026-05-24T21:25:06.732Z",
   "mode": "source-specific-crawler",
   "topics": [
     {
@@ -169,6 +169,8 @@
               "year": 2024,
               "applicationsReceived": 384564,
               "applicationsAcceptedAfterReview": 383126,
+              "fundedProjectTypeCount": null,
+              "fundedProjectsAnnounced": null,
               "sourceId": "nsfc-review-results"
             },
             {
@@ -190,6 +192,91 @@
               "start": "2024-08-23",
               "end": "2024-09-06T16:00:00+08:00",
               "sourceId": "nsfc-review-results"
+            }
+          ],
+          "parserHealthy": true
+        },
+        {
+          "id": "nsfc-2025-preliminary-review",
+          "url": "https://www.nsfc.gov.cn/p1/3381/2824/79211.html",
+          "parser": "manual-notice-page",
+          "accessMode": "public",
+          "status": "reachable",
+          "httpStatus": 200,
+          "title": "项目指南 关于公布2025年度国家自然科学基金项目申请初审结果的通告",
+          "publishedDate": "2025-04-29",
+          "markersFound": [
+            "初审结果",
+            "不予受理",
+            "复审申请",
+            "5月15日16时前"
+          ],
+          "markerStatus": "complete",
+          "parsedItemCount": 2,
+          "discoveries": [
+            {
+              "kind": "preliminaryReviewMetrics",
+              "year": 2025,
+              "applicationsReceived": 433426,
+              "applicationsInitialAccepted": 432429,
+              "applicationsInitialNotAccepted": 997,
+              "sourceId": "nsfc-2025-preliminary-review"
+            },
+            {
+              "kind": "preliminaryRecheckDeadline",
+              "year": 2025,
+              "deadline": "2025-05-15T16:00:00+08:00",
+              "sourceId": "nsfc-2025-preliminary-review"
+            }
+          ],
+          "parserHealthy": true
+        },
+        {
+          "id": "nsfc-2025-review-results",
+          "url": "https://www.nsfc.gov.cn/p1/3381/2824/94026.html",
+          "parser": "manual-notice-page",
+          "accessMode": "public",
+          "status": "reachable",
+          "httpStatus": 200,
+          "title": "项目指南 关于2025年国家自然科学基金集中接收申请项目评审结果的通告",
+          "publishedDate": "2025-08-27",
+          "markersFound": [
+            "评审结果",
+            "复审申请",
+            "查询",
+            "53159项"
+          ],
+          "markerStatus": "complete",
+          "parsedItemCount": 4,
+          "discoveries": [
+            {
+              "kind": "reviewResultMetrics",
+              "year": 2025,
+              "applicationsReceived": 433426,
+              "applicationsAcceptedAfterReview": 432434,
+              "fundedProjectTypeCount": 10,
+              "fundedProjectsAnnounced": 53159,
+              "sourceId": "nsfc-2025-review-results"
+            },
+            {
+              "kind": "reviewResultQueryOpen",
+              "year": 2025,
+              "date": "2025-08-27",
+              "sourceId": "nsfc-2025-review-results"
+            },
+            {
+              "kind": "reviewResultEmailWindow",
+              "year": 2025,
+              "start": "2025-08-27",
+              "end": "2025-08-29",
+              "sourceId": "nsfc-2025-review-results"
+            },
+            {
+              "kind": "fundingDecisionRecheckWindow",
+              "year": 2025,
+              "start": "2025-08-27",
+              "end": "2025-09-15T16:00:00+08:00",
+              "sourceId": "nsfc-2025-review-results"
             }
           ],
           "parserHealthy": true

@@ -69,6 +69,34 @@
     },
     {
       "sourceLabel": "公开来源",
+      "id": "nsfc-2025-preliminary-review",
+      "name": "2025 年度申请项目初审结果通告",
+      "url": "https://www.nsfc.gov.cn/p1/3381/2824/79211.html",
+      "type": "official-notice",
+      "markers": [
+        "初审结果",
+        "不予受理",
+        "复审申请",
+        "5月15日16时前"
+      ],
+      "refreshCadence": "annual"
+    },
+    {
+      "sourceLabel": "公开来源",
+      "id": "nsfc-2025-review-results",
+      "name": "2025 年集中接收申请项目评审结果通告",
+      "url": "https://www.nsfc.gov.cn/p1/3381/2824/94026.html",
+      "type": "official-notice",
+      "markers": [
+        "评审结果",
+        "复审申请",
+        "查询",
+        "53159项"
+      ],
+      "refreshCadence": "annual"
+    },
+    {
+      "sourceLabel": "公开来源",
       "id": "nsfc-2025-application-and-final-report",
       "name": "2025 年度项目申请与结题等事项通告",
       "url": "https://www.nsfc.gov.cn/p1/3381/2824/66780.html",

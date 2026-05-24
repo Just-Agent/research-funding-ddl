@@ -149,7 +149,7 @@ function parsePreliminaryReviewNotice(text, source) {
       sourceId: source.id
     });
   }
-  const recheck = firstMatch(text, /应在(\d{4})年(\d{1,2})月(\d{1,2})日(\d{1,2})时前向相关项目管理部门提出复审申请/);
+  const recheck = firstMatch(text, /(?:应在|可在)(\d{4})年(\d{1,2})月(\d{1,2})日(\d{1,2})时前向相关项目管理部门提出复审申请/);
   if (recheck) {
     discoveries.push({
       kind: "preliminaryRecheckDeadline",
@@ -177,12 +177,15 @@ function parseReviewResultsNotice(text, source) {
 
   const discoveries = [];
   const summary = firstMatch(text, /共接收项目申请(\d+)项，经初审和复审后共受理(\d+)项/);
+  const funded = firstMatch(text, /等(\d+)类项目共(\d+)项/);
   if (summary) {
     discoveries.push({
       kind: "reviewResultMetrics",
       year,
       applicationsReceived: Number(summary[0]),
       applicationsAcceptedAfterReview: Number(summary[1]),
+      fundedProjectTypeCount: funded ? Number(funded[0]) : null,
+      fundedProjectsAnnounced: funded ? Number(funded[1]) : null,
       sourceId: source.id
     });
   }
