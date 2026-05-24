@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-24T15:13:24.627Z",
+  "generatedAt": "2026-05-24T19:05:34.028Z",
   "mode": "template-source-reachability",
   "topics": [
     {
@@ -39,6 +39,14 @@
         {
           "id": "nsfc-review-results",
           "url": "https://www.nsfc.gov.cn/p1/3381/2824/66854.html",
+          "parser": "manual-notice-page",
+          "accessMode": "public",
+          "status": "reachable",
+          "httpStatus": 200
+        },
+        {
+          "id": "nsfc-2025-application-and-final-report",
+          "url": "https://www.nsfc.gov.cn/p1/3381/2824/66780.html",
           "parser": "manual-notice-page",
           "accessMode": "public",
           "status": "reachable",

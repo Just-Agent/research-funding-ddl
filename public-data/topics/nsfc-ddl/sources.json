@@ -66,6 +66,23 @@
         "查询"
       ],
       "refreshCadence": "annual"
+    },
+    {
+      "sourceLabel": "公开来源",
+      "id": "nsfc-2025-application-and-final-report",
+      "name": "2025 年度项目申请与结题等事项通告",
+      "url": "https://www.nsfc.gov.cn/p1/3381/2824/66780.html",
+      "type": "official-notice",
+      "markers": [
+        "集中接收",
+        "项目类型",
+        "初审结果",
+        "结题",
+        "进展报告",
+        "年度管理报告",
+        "包干制"
+      ],
+      "refreshCadence": "annual"
     }
   ]
 }

@@ -8,7 +8,11 @@
       "type": "official",
       "accessMode": "public",
       "parser": "nsfc-notice-list",
-      "markers": ["年度国家自然科学基金项目申请", "评审结果", "结题"],
+      "markers": [
+        "年度国家自然科学基金项目申请",
+        "评审结果",
+        "结题"
+      ],
       "refreshCadence": "weekly",
       "coverageNote": "用于发现年度申请、结题、评审结果和复审相关官方通告。"
     },
@@ -19,7 +23,11 @@
       "type": "official-system",
       "accessMode": "manual_verified",
       "parser": "manual-system-link",
-      "markers": ["申请", "查询", "ISIS"],
+      "markers": [
+        "申请",
+        "查询",
+        "ISIS"
+      ],
       "refreshCadence": "manual",
       "coverageNote": "作为申请、查询和复审入口；具体项目状态可能需要登录，生产数据只采公开通告。"
     },
@@ -30,7 +38,11 @@
       "type": "official-guide",
       "accessMode": "public",
       "parser": "manual-guide-page",
-      "markers": ["项目指南", "集中接收", "申请"],
+      "markers": [
+        "项目指南",
+        "集中接收",
+        "申请"
+      ],
       "refreshCadence": "annual",
       "coverageNote": "年度项目指南用于补充项目类型、申请条件和特殊项目时间节点。"
     },
@@ -41,7 +53,12 @@
       "type": "official-notice",
       "accessMode": "public",
       "parser": "manual-notice-page",
-      "markers": ["初审结果", "不予受理", "复审申请", "6月5日前"],
+      "markers": [
+        "初审结果",
+        "不予受理",
+        "复审申请",
+        "6月5日前"
+      ],
       "refreshCadence": "annual",
       "coverageNote": "用于核验 2026 年初审结果、复审申请截止和复审结果通知节点。"
     },
@@ -52,9 +69,32 @@
       "type": "official-notice",
       "accessMode": "public",
       "parser": "manual-notice-page",
-      "markers": ["评审结果", "复审申请", "查询"],
+      "markers": [
+        "评审结果",
+        "复审申请",
+        "查询"
+      ],
       "refreshCadence": "annual",
       "coverageNote": "用于维护集中接收申请项目评审结果公布、复审申请和年度结果预测窗口。"
+    },
+    {
+      "id": "nsfc-2025-application-and-final-report",
+      "name": "2025 年度项目申请与结题等事项通告",
+      "url": "https://www.nsfc.gov.cn/p1/3381/2824/66780.html",
+      "type": "official-notice",
+      "accessMode": "public",
+      "parser": "manual-notice-page",
+      "markers": [
+        "集中接收",
+        "项目类型",
+        "初审结果",
+        "结题",
+        "进展报告",
+        "年度管理报告",
+        "包干制"
+      ],
+      "refreshCadence": "annual",
+      "coverageNote": "用于核验 2025 年集中接收项目类型、初审结果公布计划、结题/进展报告和年度管理事项。"
     }
   ]
 }
