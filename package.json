@@ -11,6 +11,7 @@
     "link-check": "node scripts/link-check.mjs",
     "export:public": "node scripts/export-public-data.mjs",
     "validate:public": "node scripts/validate-public-data.mjs",
-    "build": "npm run test:crawler && npm run forecast:audit && npm run validate && npm run export:public && npm run validate:public"
+    "test:public-export": "node scripts/test-public-export-nsfc.mjs",
+    "build": "npm run test:crawler && npm run forecast:audit && npm run validate && npm run export:public && npm run validate:public && npm run test:public-export"
   }
 }

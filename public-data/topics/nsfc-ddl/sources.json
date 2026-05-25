@@ -11,8 +11,7 @@
         "年度国家自然科学基金项目申请",
         "评审结果",
         "结题"
-      ],
-      "refreshCadence": "weekly"
+      ]
     },
     {
       "sourceLabel": "人工核验来源",
@@ -24,8 +23,7 @@
         "申请",
         "查询",
         "ISIS"
-      ],
-      "refreshCadence": "manual"
+      ]
     },
     {
       "sourceLabel": "公开来源",
@@ -37,8 +35,7 @@
         "项目指南",
         "集中接收",
         "申请"
-      ],
-      "refreshCadence": "annual"
+      ]
     },
     {
       "sourceLabel": "公开来源",
@@ -51,8 +48,7 @@
         "不予受理",
         "复审申请",
         "6月5日前"
-      ],
-      "refreshCadence": "annual"
+      ]
     },
     {
       "sourceLabel": "公开来源",
@@ -64,8 +60,7 @@
         "评审结果",
         "复审申请",
         "查询"
-      ],
-      "refreshCadence": "annual"
+      ]
     },
     {
       "sourceLabel": "公开来源",
@@ -78,8 +73,7 @@
         "不予受理",
         "复审申请",
         "5月15日16时前"
-      ],
-      "refreshCadence": "annual"
+      ]
     },
     {
       "sourceLabel": "公开来源",
@@ -92,8 +86,7 @@
         "复审申请",
         "查询",
         "53159项"
-      ],
-      "refreshCadence": "annual"
+      ]
     },
     {
       "sourceLabel": "公开来源",
@@ -106,7 +99,6 @@
         "集中接收申请项目",
         "8月24日"
       ],
-      "refreshCadence": "archival",
       "eventYear": 2023,
       "reviewResultDate": "2023-08-24"
     },
@@ -121,7 +113,6 @@
         "集中接收申请项目",
         "9月8日"
       ],
-      "refreshCadence": "archival",
       "eventYear": 2022,
       "reviewResultDate": "2022-09-08"
     },
@@ -136,7 +127,6 @@
         "集中接收申请项目",
         "8月17日"
       ],
-      "refreshCadence": "archival",
       "eventYear": 2021,
       "reviewResultDate": "2021-08-17"
     },
@@ -154,8 +144,7 @@
         "进展报告",
         "年度管理报告",
         "包干制"
-      ],
-      "refreshCadence": "annual"
+      ]
     }
   ]
 }
