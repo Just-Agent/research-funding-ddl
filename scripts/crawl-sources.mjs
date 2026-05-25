@@ -1,4 +1,5 @@
 import fs from "node:fs";
+import { pathToFileURL } from "node:url";
 
 const root = new URL("../data/topics/", import.meta.url);
 const report = {
@@ -7,7 +8,7 @@ const report = {
   topics: []
 };
 
-function htmlToText(html) {
+export function htmlToText(html) {
   return html
     .replace(/<script[\s\S]*?<\/script>/gi, " ")
     .replace(/<style[\s\S]*?<\/style>/gi, " ")
@@ -256,7 +257,7 @@ function parsePerformanceReportSource(source) {
   ];
 }
 
-function parseSource(source, html) {
+export function parseSource(source, html) {
   const text = htmlToText(html);
   const parser = source.parser || "";
   let discoveries = [];
@@ -278,50 +279,56 @@ function parseSource(source, html) {
   };
 }
 
-for (const dirent of fs.readdirSync(root, { withFileTypes: true })) {
-  if (!dirent.isDirectory()) continue;
-  const topicId = dirent.name;
-  const sourcesFile = new URL(`${topicId}/sources.json`, root);
-  if (!fs.existsSync(sourcesFile)) continue;
-  const sources = JSON.parse(fs.readFileSync(sourcesFile, "utf8"));
-  const sourceReports = [];
+export async function runCrawler() {
+  for (const dirent of fs.readdirSync(root, { withFileTypes: true })) {
+    if (!dirent.isDirectory()) continue;
+    const topicId = dirent.name;
+    const sourcesFile = new URL(`${topicId}/sources.json`, root);
+    if (!fs.existsSync(sourcesFile)) continue;
+    const sources = JSON.parse(fs.readFileSync(sourcesFile, "utf8"));
+    const sourceReports = [];
 
-  for (const source of sources.sourceFamilies || []) {
-    const entry = {
-      id: source.id,
-      url: source.url,
-      parser: source.parser,
-      accessMode: source.accessMode,
-      status: "not_checked"
-    };
-    if (source.accessMode === "public" && source.url) {
-      try {
-        const response = await fetch(source.url, { redirect: "follow" });
-        entry.status = response.ok ? "reachable" : "http_error";
-        entry.httpStatus = response.status;
-        if (response.ok) {
-          const html = await response.text();
-          const parsed = parseSource(source, html);
-          entry.title = parsed.title;
-          entry.publishedDate = parsed.publishedDate;
-          entry.markersFound = parsed.markersFound;
-          entry.markerStatus = (source.markers || []).length === parsed.markersFound.length ? "complete" : "partial";
-          entry.parsedItemCount = parsed.discoveries.length;
-          entry.discoveries = parsed.discoveries;
-          entry.parserHealthy = parsed.discoveries.length > 0 || source.parser === "manual-guide-page";
+    for (const source of sources.sourceFamilies || []) {
+      const entry = {
+        id: source.id,
+        url: source.url,
+        parser: source.parser,
+        accessMode: source.accessMode,
+        status: "not_checked"
+      };
+      if (source.accessMode === "public" && source.url) {
+        try {
+          const response = await fetch(source.url, { redirect: "follow" });
+          entry.status = response.ok ? "reachable" : "http_error";
+          entry.httpStatus = response.status;
+          if (response.ok) {
+            const html = await response.text();
+            const parsed = parseSource(source, html);
+            entry.title = parsed.title;
+            entry.publishedDate = parsed.publishedDate;
+            entry.markersFound = parsed.markersFound;
+            entry.markerStatus = (source.markers || []).length === parsed.markersFound.length ? "complete" : "partial";
+            entry.parsedItemCount = parsed.discoveries.length;
+            entry.discoveries = parsed.discoveries;
+            entry.parserHealthy = parsed.discoveries.length > 0 || source.parser === "manual-guide-page";
+          }
+        } catch (error) {
+          entry.status = "fetch_error";
+          entry.error = error.message;
         }
-      } catch (error) {
-        entry.status = "fetch_error";
-        entry.error = error.message;
+      } else {
+        entry.status = "manual_or_authorized_source";
       }
-    } else {
-      entry.status = "manual_or_authorized_source";
+      sourceReports.push(entry);
     }
-    sourceReports.push(entry);
+
+    report.topics.push({ topicId, sources: sourceReports });
   }
 
-  report.topics.push({ topicId, sources: sourceReports });
+  fs.writeFileSync(new URL("../data/crawl-report.json", import.meta.url), `${JSON.stringify(report, null, 2)}\n`, "utf8");
+  console.log(`wrote crawl report for ${report.topics.length} topics`);
 }
 
-fs.writeFileSync(new URL("../data/crawl-report.json", import.meta.url), `${JSON.stringify(report, null, 2)}\n`, "utf8");
-console.log(`wrote crawl report for ${report.topics.length} topics`);
+if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
+  await runCrawler();
+}

@@ -34,9 +34,13 @@
 
 ```powershell
 npm run crawl
+npm run test:crawler
 npm run validate
+npm run build
 npm run link-check
 ```
+
+`npm run test:crawler` 使用本地样本文本固定 NSFC 官方通告抽取行为：集中接收申请窗口、项目门类、初审规模/复审、评审结果查询/邮件/复审窗口，以及官方绩效报告中的历年结果发布时间。它不访问网络，也不会改写真实数据。
 
 ## Hub Registration
 
