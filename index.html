@@ -218,13 +218,122 @@
       }
       .type-card h3 { margin: 0 0 8px; font-size: 18px; line-height: 1.25; }
       .type-card p { margin: 0; color: var(--muted); line-height: 1.55; }
+      .lookup-panel {
+        border: 1px solid #cfe7fb;
+        border-radius: 28px;
+        background: linear-gradient(135deg, rgba(255,255,255,.96), rgba(236,249,255,.9));
+        box-shadow: 0 24px 58px rgba(12, 35, 66, .1);
+        padding: 22px;
+        margin-top: 16px;
+      }
+      .lookup-controls {
+        display: grid;
+        grid-template-columns: minmax(260px, 1fr) auto;
+        gap: 12px;
+        align-items: center;
+        margin-bottom: 16px;
+      }
+      .search-input {
+        width: 100%;
+        min-height: 52px;
+        border: 1px solid #cfe0f2;
+        border-radius: 18px;
+        background: #fff;
+        color: var(--ink);
+        font: inherit;
+        font-weight: 850;
+        padding: 0 16px;
+        outline: none;
+      }
+      .search-input:focus {
+        border-color: var(--blue);
+        box-shadow: 0 0 0 4px rgba(14, 165, 233, .14);
+      }
+      .project-count {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 52px;
+        border-radius: 18px;
+        border: 1px solid #bae6fd;
+        background: #e0f2fe;
+        color: #0369a1;
+        font-weight: 950;
+        padding: 0 16px;
+        white-space: nowrap;
+      }
+      .quick-chips {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin: 0 0 18px;
+      }
+      .chip {
+        border: 1px solid #dbeafe;
+        border-radius: 999px;
+        background: #fff;
+        color: #27415f;
+        cursor: pointer;
+        font: inherit;
+        font-size: 13px;
+        font-weight: 900;
+        padding: 8px 11px;
+      }
+      .chip.active {
+        border-color: #38bdf8;
+        background: #e0f2fe;
+        color: #075985;
+      }
+      .lookup-result {
+        display: grid;
+        grid-template-columns: minmax(0, 1.1fr) minmax(280px, .9fr);
+        gap: 14px;
+      }
+      .lookup-main, .lookup-rail {
+        border: 1px solid #dbeafe;
+        border-radius: 22px;
+        background: #fff;
+        padding: 18px;
+      }
+      .lookup-main h3, .lookup-rail h3 {
+        margin: 0 0 10px;
+        font-size: 22px;
+      }
+      .fact-row {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 10px;
+        margin: 14px 0;
+      }
+      .fact {
+        border: 1px solid #e2edf8;
+        border-radius: 16px;
+        background: #f8fbff;
+        padding: 12px;
+      }
+      .fact strong { display: block; font-size: 18px; }
+      .fact span { color: var(--muted); font-weight: 800; font-size: 13px; }
+      .mini-list {
+        display: grid;
+        gap: 10px;
+        margin-top: 12px;
+      }
+      .mini-item {
+        border: 1px solid #edf2f8;
+        border-radius: 16px;
+        background: #fbfdff;
+        padding: 12px;
+      }
+      .mini-item strong { display: block; margin-bottom: 4px; }
+      .mini-item p { margin: 0; }
+      .mini-item a { color: #0369a1; font-weight: 900; }
       .footer {
         padding: 30px 0 42px;
         color: var(--muted);
         border-top: 1px solid var(--line);
       }
       @media (max-width: 860px) {
-        .hero, .grid, .stats, .type-grid, .metrics-grid { grid-template-columns: 1fr; }
+        .hero, .grid, .stats, .type-grid, .metrics-grid, .lookup-controls, .lookup-result, .fact-row { grid-template-columns: 1fr; }
         .timeline-row { grid-template-columns: 1fr; gap: 6px; }
       }
     </style>
@@ -265,8 +374,21 @@
       </section>
 
       <section class="section">
-        <h2>2026 集中接收项目门类</h2>
-        <p class="muted">这些项目在 2026 年度通告中进入同一集中接收窗口。具体申请条件、限项和材料要求仍需逐项查看年度指南与项目指南。</p>
+        <h2>按项目类型查询</h2>
+        <p class="muted">输入“面上、青年、重点、杰青、优青、联合基金、数学天元”等关键词，可以把对应项目的最近官方窗口、历史记录、相关评审节点和已公开资助指标放到同一个视图里。</p>
+        <div class="lookup-panel">
+          <div class="lookup-controls">
+            <input id="projectLookup" class="search-input" type="search" placeholder="搜索项目类型，例如：面上、青年、重点、杰青、联合基金" autocomplete="off" />
+            <span class="project-count" id="projectCount"></span>
+          </div>
+          <div class="quick-chips" id="projectMatches"></div>
+          <div class="lookup-result" id="projectLookupResult"></div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>项目门类总览</h2>
+        <p class="muted">按项目类型合并 2025/2026 年官方节点。具体申请条件、限项和材料要求仍需逐项查看年度指南与项目指南。</p>
         <div class="type-grid" id="projectTypes"></div>
       </section>
 
@@ -300,17 +422,94 @@
       const projectTypes = history
         .filter((item) => item.subtopic === "nsfc-project-types")
         .sort((a, b) => a.title.localeCompare(b.title, "zh-CN"));
+      const projectProfiles = buildProjectProfiles(projectTypes, metrics);
       const nextOfficial = official.sort((a, b) => new Date(a.deadline) - new Date(b.deadline))[0];
+      let activeProjectKey = projectProfiles.find((profile) => profile.name.includes("面上项目"))?.key || projectProfiles[0]?.key || "";
+
+      function text(value) {
+        return String(value ?? "").replace(/[&<>"']/g, (char) => ({
+          "&": "&amp;",
+          "<": "&lt;",
+          ">": "&gt;",
+          '"': "&quot;",
+          "'": "&#39;"
+        }[char]));
+      }
 
       function daysLeft(date) {
         const diff = new Date(date).getTime() - Date.now();
         return Math.max(0, Math.ceil(diff / 86400000));
       }
 
+      function itemDate(item) {
+        return item.deadline || item.date || item.estimatedNextWindow?.start || "";
+      }
+
+      function cleanProjectName(title) {
+        return String(title || "")
+          .replace(/^\d{4}\s*年度/, "")
+          .replace(/集中接收$/, "")
+          .trim();
+      }
+
+      function normalizeProjectText(value) {
+        return String(value || "")
+          .toLowerCase()
+          .replace(/\d{4}\s*年度/g, "")
+          .replace(/集中接收|项目|部分|（|）|\(|\)|\s+/g, "")
+          .replace(/[，、,]/g, "");
+      }
+
+      function relatedMetricsForProfile(profile, allMetrics) {
+        const profileName = normalizeProjectText(profile.name);
+        return allMetrics
+          .filter((metric) => metric.metric === "funded_projects_by_type" && metric.projectType)
+          .filter((metric) => {
+            const metricName = normalizeProjectText(metric.projectType);
+            return profileName.includes(metricName)
+              || metricName.includes(profileName)
+              || (profile.name.includes("青年科学基金") && metric.projectType.includes("青年科学基金"));
+          })
+          .sort((a, b) => Number(b.year || 0) - Number(a.year || 0));
+      }
+
+      function buildProjectProfiles(records, allMetrics) {
+        const map = new Map();
+        for (const item of records) {
+          const name = cleanProjectName(item.title);
+          const key = normalizeProjectText(name);
+          if (!map.has(key)) {
+            map.set(key, {
+              key,
+              name,
+              records: [],
+              metrics: [],
+              latest: null
+            });
+          }
+          map.get(key).records.push(item);
+        }
+        const profiles = [...map.values()].map((profile) => {
+          profile.records.sort((a, b) => new Date(itemDate(b)) - new Date(itemDate(a)));
+          profile.latest = profile.records[0];
+          profile.metrics = relatedMetricsForProfile(profile, allMetrics);
+          return profile;
+        });
+        return profiles.sort((a, b) => a.name.localeCompare(b.name, "zh-CN"));
+      }
+
+      function projectMatches(profile, query) {
+        if (!query) return true;
+        const normalizedQuery = normalizeProjectText(query);
+        return normalizeProjectText(profile.name).includes(normalizedQuery)
+          || profile.records.some((record) => normalizeProjectText([record.title, record.description, ...(record.tags || [])].join(" ")).includes(normalizedQuery))
+          || profile.metrics.some((metric) => normalizeProjectText(metric.projectType || "").includes(normalizedQuery));
+      }
+
       document.querySelector("#stats").innerHTML = [
         ["官方节点", official.length],
         ["历史节点", history.length],
-        ["预测窗口", forecasts.length],
+        ["项目门类", projectProfiles.length],
         ["下一节点", nextOfficial ? `${daysLeft(nextOfficial.deadline)} 天` : "待公告"]
       ].map(([label, value]) => `<div class="stat"><strong>${value}</strong><span>${label}</span></div>`).join("");
 
@@ -364,16 +563,99 @@
       }
 
       document.querySelector("#cards").innerHTML = [...official, ...forecasts].map(renderCard).join("");
-      document.querySelector("#projectTypes").innerHTML = projectTypes.map((item) => `
+      function renderProjectLookup() {
+        const query = document.querySelector("#projectLookup").value.trim();
+        const matches = projectProfiles.filter((profile) => projectMatches(profile, query)).slice(0, 12);
+        const selected = matches.find((profile) => profile.key === activeProjectKey) || matches[0] || projectProfiles[0];
+        if (!selected) {
+          document.querySelector("#projectMatches").innerHTML = "";
+          document.querySelector("#projectLookupResult").innerHTML = `<div class="lookup-main"><h3>暂无项目类型数据</h3><p class="muted">等待官方数据更新。</p></div>`;
+          return;
+        }
+        activeProjectKey = selected.key;
+        const latest = selected.latest;
+        const years = [...new Set(selected.records.map((record) => itemDate(record).slice(0, 4)).filter(Boolean))];
+        const latestMetric = selected.metrics[0];
+        const reviewNodes = history.filter((item) => item.subtopic === "nsfc-review").slice(0, 4);
+        const applicationNodes = history.filter((item) => item.subtopic === "nsfc-application").slice(0, 2);
+        const forecastNodes = forecasts.filter((item) => item.subtopic === "nsfc-application" || item.subtopic === "nsfc-review");
+
+        document.querySelector("#projectCount").textContent = `${projectProfiles.length} 类项目`;
+        document.querySelector("#projectMatches").innerHTML = matches.map((profile) => `
+          <button class="chip ${profile.key === selected.key ? "active" : ""}" type="button" data-project-key="${text(profile.key)}">${text(profile.name)}</button>
+        `).join("");
+        document.querySelector("#projectLookupResult").innerHTML = `
+          <article class="lookup-main">
+            <h3>${text(selected.name)}</h3>
+            <p class="muted">${text(latest.description)}</p>
+            <div class="fact-row">
+              <div class="fact"><strong>${text(latest.dateRange || latest.date || "待公告")}</strong><span>最近官方窗口</span></div>
+              <div class="fact"><strong>${text(years.join(" / ") || "待补齐")}</strong><span>已收录年份</span></div>
+              <div class="fact"><strong>${latestMetric ? Number(latestMetric.value).toLocaleString("zh-CN") : "待公开"}</strong><span>${latestMetric ? `${text(latestMetric.year)} 资助数` : "公开资助指标"}</span></div>
+            </div>
+            <div class="meta">
+              ${(latest.tags || []).map((tag) => `<span class="tag">${text(tag)}</span>`).join("")}
+            </div>
+            <a class="pill" href="${latest.url}" target="_blank" rel="noreferrer">查看最近官方来源</a>
+          </article>
+          <aside class="lookup-rail">
+            <h3>相关节奏</h3>
+            <div class="mini-list">
+              ${selected.records.slice(0, 3).map((record) => `
+                <div class="mini-item">
+                  <strong>${text(itemDate(record))} · ${text(record.title)}</strong>
+                  <p class="muted">${text(record.dateRange || record.description)}</p>
+                </div>
+              `).join("")}
+              ${applicationNodes.map((record) => `
+                <div class="mini-item">
+                  <strong>${text(record.date)} · ${text(record.title)}</strong>
+                  <p class="muted">${text(record.dateRange || record.description)}</p>
+                </div>
+              `).join("")}
+              ${reviewNodes.slice(0, 2).map((record) => `
+                <div class="mini-item">
+                  <strong>${text(record.date)} · ${text(record.title)}</strong>
+                  <p class="muted">${text(record.description)}</p>
+                </div>
+              `).join("")}
+              ${forecastNodes.slice(0, 1).map((record) => `
+                <div class="mini-item">
+                  <strong>${text(record.estimatedNextWindow.start)} - ${text(record.estimatedNextWindow.end)} · 预测窗口</strong>
+                  <p class="muted">预测只用于节奏参考，实际安排以 NSFC 官方通告为准。</p>
+                </div>
+              `).join("")}
+            </div>
+          </aside>
+        `;
+        document.querySelectorAll("[data-project-key]").forEach((button) => {
+          button.addEventListener("click", () => {
+            activeProjectKey = button.dataset.projectKey;
+            document.querySelector("#projectLookup").value = button.textContent;
+            renderProjectLookup();
+          });
+        });
+      }
+
+      document.querySelector("#projectLookup").addEventListener("input", () => {
+        activeProjectKey = "";
+        renderProjectLookup();
+      });
+      renderProjectLookup();
+
+      document.querySelector("#projectTypes").innerHTML = projectProfiles.map((profile) => {
+        const item = profile.latest;
+        return `
         <article class="type-card">
-          <h3>${item.title}</h3>
+          <h3>${profile.name}</h3>
           <p>${item.description}</p>
           <div class="meta">
             ${(item.tags || []).slice(0, 3).map((tag) => `<span class="tag">${tag}</span>`).join("")}
+            <span class="tag">${profile.records.length} 年度节点</span>
           </div>
           <a class="pill" href="${item.url}" target="_blank" rel="noreferrer">项目指南 / 通告</a>
         </article>
-      `).join("");
+      `}).join("");
       document.querySelector("#metrics").innerHTML = metrics.map((metric) => `
         <a class="metric-card" href="${metric.url}" target="_blank" rel="noreferrer">
           <span>${metric.year || metric.asOfDate}</span>
