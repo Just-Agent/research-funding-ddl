@@ -1320,6 +1320,78 @@
     "status": "ended"
   },
   {
+    "id": "nsfc-2021-review-result-query",
+    "topicId": "nsfc-ddl",
+    "title": "2021 年度集中接收申请项目评审结果公布",
+    "type": "historyEvent",
+    "date": "2021-08-17",
+    "url": "https://www.nsfc.gov.cn/Portals/0/fj/fj20220413_01.pdf",
+    "source": "国家自然科学基金委员会",
+    "sourceUrl": "https://www.nsfc.gov.cn/Portals/0/fj/fj20220413_01.pdf",
+    "stage": "Review result",
+    "category": "科研基金",
+    "subtopic": "nsfc-review",
+    "subtopicName": "评审结果",
+    "tags": [
+      "NSFC",
+      "评审结果",
+      "资助结果"
+    ],
+    "description": "NSFC 2021 年度绩效评价报告记录，2021 年度集中接收申请项目评审结果于 2021 年 8 月 17 日公布。",
+    "dateRange": "2021-08-17",
+    "location": "Online",
+    "isOnline": true,
+    "status": "ended"
+  },
+  {
+    "id": "nsfc-2022-review-result-query",
+    "topicId": "nsfc-ddl",
+    "title": "2022 年度集中接收申请项目评审结果公布",
+    "type": "historyEvent",
+    "date": "2022-09-08",
+    "url": "https://www.nsfc.gov.cn/Portals/0/fj/fj20230605_01.pdf",
+    "source": "国家自然科学基金委员会",
+    "sourceUrl": "https://www.nsfc.gov.cn/Portals/0/fj/fj20230605_01.pdf",
+    "stage": "Review result",
+    "category": "科研基金",
+    "subtopic": "nsfc-review",
+    "subtopicName": "评审结果",
+    "tags": [
+      "NSFC",
+      "评审结果",
+      "资助结果"
+    ],
+    "description": "NSFC 2022 年度绩效评价报告记录，2022 年度集中接收申请项目评审结果于 2022 年 9 月 8 日公布。",
+    "dateRange": "2022-09-08",
+    "location": "Online",
+    "isOnline": true,
+    "status": "ended"
+  },
+  {
+    "id": "nsfc-2023-review-result-query",
+    "topicId": "nsfc-ddl",
+    "title": "2023 年度集中接收申请项目评审结果公布",
+    "type": "historyEvent",
+    "date": "2023-08-24",
+    "url": "https://www.nsfc.gov.cn/Portals/0/fj/fj20241227_01.pdf",
+    "source": "国家自然科学基金委员会",
+    "sourceUrl": "https://www.nsfc.gov.cn/Portals/0/fj/fj20241227_01.pdf",
+    "stage": "Review result",
+    "category": "科研基金",
+    "subtopic": "nsfc-review",
+    "subtopicName": "评审结果",
+    "tags": [
+      "NSFC",
+      "评审结果",
+      "资助结果"
+    ],
+    "description": "NSFC 2023 年度绩效评价报告记录，2023 年度集中接收申请项目评审结果于 2023 年 8 月 24 日公布。",
+    "dateRange": "2023-08-24",
+    "location": "Online",
+    "isOnline": true,
+    "status": "ended"
+  },
+  {
     "id": "nsfc-2024-review-result-query",
     "topicId": "nsfc-ddl",
     "title": "2024 年度集中接收申请项目评审结果公布",
@@ -1417,6 +1489,9 @@
     "status": "unannounced",
     "lastOfficialDate": "2025-08-27",
     "basisEvents": [
+      "nsfc-2021-review-result-query",
+      "nsfc-2022-review-result-query",
+      "nsfc-2023-review-result-query",
       "nsfc-2024-review-result-query",
       "nsfc-2025-review-result-query"
     ],
@@ -1426,22 +1501,31 @@
   },
   "releaseCadence": {
     "algorithmVersion": "just-ddl-seasonal-window-v1",
-    "sampleSize": 2,
+    "sampleSize": 5,
     "basisEvents": [
+      "nsfc-2021-review-result-query",
+      "nsfc-2022-review-result-query",
+      "nsfc-2023-review-result-query",
       "nsfc-2024-review-result-query",
       "nsfc-2025-review-result-query"
     ],
     "dates": [
+      "2021-08-17",
+      "2022-09-08",
+      "2023-08-24",
       "2024-08-23",
       "2025-08-27"
     ],
     "intervals": [
+      387,
+      350,
+      365,
       369
     ],
-    "medianDays": 369,
-    "meanDays": 369,
-    "minDays": 369,
-    "maxDays": 369,
+    "medianDays": 367,
+    "meanDays": 368,
+    "minDays": 350,
+    "maxDays": 387,
     "rollForwardCount": 0,
     "windowRule": {
       "type": "annual_observation_window",
@@ -1454,7 +1538,7 @@
       "end": "2026-09-05"
     }
   },
-  "forecastBasis": "2024 年和 2025 年集中接收申请项目评审结果均在 8 月下旬公布；2026 年评审结果实际发布时间必须等待 NSFC 官方通告。",
+  "forecastBasis": "2021-2025 年 NSFC 官方报告或通告显示，集中接收申请项目评审结果集中在 8 月中下旬至 9 月上旬公布；2026 年评审结果实际发布时间必须等待 NSFC 官方通告。",
     "confidence": "medium",
     "url": "https://www.nsfc.gov.cn/",
     "source": "国家自然科学基金委员会",
@@ -1468,7 +1552,7 @@
       "预测窗口",
       "评审结果"
     ],
-    "description": "展示用户关心的评审结果节奏，但明确样本不足且不进入官方 DDL 统计。",
+    "description": "展示用户关心的评审结果节奏；预测窗口不等于官方发布日期，待 NSFC 官方通告后替换为正式节点。",
     "dateRange": "2026-08-20 - 2026-09-05",
     "location": "Online",
     "isOnline": true
