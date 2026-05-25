@@ -97,6 +97,51 @@
     },
     {
       "sourceLabel": "公开来源",
+      "id": "nsfc-2023-performance-report",
+      "name": "2023 年度 NSFC 绩效评价报告",
+      "url": "https://www.nsfc.gov.cn/Portals/0/fj/fj20241227_01.pdf",
+      "type": "official-report",
+      "markers": [
+        "2023年度绩效评价报告",
+        "集中接收申请项目",
+        "8月24日"
+      ],
+      "refreshCadence": "archival",
+      "eventYear": 2023,
+      "reviewResultDate": "2023-08-24"
+    },
+    {
+      "sourceLabel": "公开来源",
+      "id": "nsfc-2022-performance-report",
+      "name": "2022 年度 NSFC 绩效评价报告",
+      "url": "https://www.nsfc.gov.cn/Portals/0/fj/fj20230605_01.pdf",
+      "type": "official-report",
+      "markers": [
+        "2022年度绩效评价报告",
+        "集中接收申请项目",
+        "9月8日"
+      ],
+      "refreshCadence": "archival",
+      "eventYear": 2022,
+      "reviewResultDate": "2022-09-08"
+    },
+    {
+      "sourceLabel": "公开来源",
+      "id": "nsfc-2021-performance-report",
+      "name": "2021 年度 NSFC 绩效评价报告",
+      "url": "https://www.nsfc.gov.cn/Portals/0/fj/fj20220413_01.pdf",
+      "type": "official-report",
+      "markers": [
+        "2021年度绩效评价报告",
+        "集中接收申请项目",
+        "8月17日"
+      ],
+      "refreshCadence": "archival",
+      "eventYear": 2021,
+      "reviewResultDate": "2021-08-17"
+    },
+    {
+      "sourceLabel": "公开来源",
       "id": "nsfc-2025-application-and-final-report",
       "name": "2025 年度项目申请与结题等事项通告",
       "url": "https://www.nsfc.gov.cn/p1/3381/2824/66780.html",

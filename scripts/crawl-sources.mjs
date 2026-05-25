@@ -243,11 +243,26 @@ function parseOfficialNoticeList(html, source) {
   return discoveries;
 }
 
+function parsePerformanceReportSource(source) {
+  const year = Number(source.eventYear || String(source.reviewResultDate || "").slice(0, 4));
+  if (!year || !source.reviewResultDate) return [];
+  return [
+    {
+      kind: "reviewResultPublishedFromPerformanceReport",
+      year,
+      date: source.reviewResultDate,
+      sourceId: source.id
+    }
+  ];
+}
+
 function parseSource(source, html) {
   const text = htmlToText(html);
   const parser = source.parser || "";
   let discoveries = [];
-  if (/项目申请初审结果/.test(text)) {
+  if (parser === "nsfc-performance-report") {
+    discoveries = parsePerformanceReportSource(source);
+  } else if (/项目申请初审结果/.test(text)) {
     discoveries = parsePreliminaryReviewNotice(text, source) || [];
   } else if (/集中接收申请项目评审结果/.test(text)) {
     discoveries = parseReviewResultsNotice(text, source) || [];
