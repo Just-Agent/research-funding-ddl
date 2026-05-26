@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-25T05:20:30.592Z",
+  "generatedAt": "2026-05-26T09:24:17.726Z",
   "mode": "source-specific-crawler",
   "topics": [
     {
@@ -10,75 +10,8 @@
           "url": "https://www.nsfc.gov.cn/p1/3381/2824/99667.html",
           "parser": "nsfc-notice-list",
           "accessMode": "public",
-          "status": "reachable",
-          "httpStatus": 200,
-          "title": "项目指南 关于2026年度国家自然科学基金项目申请与结题等有关事项的通告",
-          "publishedDate": "2026-01-14",
-          "markersFound": [
-            "年度国家自然科学基金项目申请",
-            "结题"
-          ],
-          "markerStatus": "partial",
-          "parsedItemCount": 6,
-          "discoveries": [
-            {
-              "kind": "applicationWindow",
-              "year": 2026,
-              "start": "2026-03-01",
-              "end": "2026-03-20T16:00:00+08:00",
-              "projectTypes": [
-                "面上项目",
-                "青年科学基金项目（C类）",
-                "地区科学基金项目",
-                "重点项目",
-                "青年科学基金项目（B类）",
-                "青年科学基金项目（A类）（含延续资助项目",
-                "下同）",
-                "创新研究群体项目",
-                "卓越研究群体项目",
-                "重点国际（地区）合作研究项目",
-                "外国学者研究基金项目",
-                "合作创新研究团队项目",
-                "国家重大科研仪器研制项目（自由申请）",
-                "部分联合基金项目",
-                "部分重大研究计划项目和部分数学天元基金项目"
-              ],
-              "sourceId": "nsfc-official-notices"
-            },
-            {
-              "kind": "preliminaryReviewPlan",
-              "year": 2026,
-              "date": "2026-04-29",
-              "qualifier": "on_or_before",
-              "sourceId": "nsfc-official-notices"
-            },
-            {
-              "kind": "progressReportDeadline",
-              "year": 2026,
-              "deadline": "2026-01-15",
-              "sourceId": "nsfc-official-notices"
-            },
-            {
-              "kind": "finalReportOnlineDeadline",
-              "year": 2026,
-              "deadline": "2026-02-24T16:00:00+08:00",
-              "sourceId": "nsfc-official-notices"
-            },
-            {
-              "kind": "finalReportPaperDeadline",
-              "year": 2026,
-              "deadline": "2026-03-09",
-              "sourceId": "nsfc-official-notices"
-            },
-            {
-              "kind": "annualManagementReportWindow",
-              "year": 2026,
-              "start": "2026-04-01",
-              "end": "2026-04-15T16:00:00+08:00",
-              "sourceId": "nsfc-official-notices"
-            }
-          ],
-          "parserHealthy": true
+          "status": "fetch_error",
+          "error": "fetch failed"
         },
         {
           "id": "nsfc-isis",
@@ -92,340 +25,72 @@
           "url": "https://www.nsfc.gov.cn/p1/2931/4077/2026nxmzn.html",
           "parser": "manual-guide-page",
           "accessMode": "public",
-          "status": "reachable",
-          "httpStatus": 200,
-          "title": "2026年项目指南 当前位置： 首页 > 项目指南 > 2026年项目指南 基金要闻 > 通知公告 --> 2026年度项目指南 2025年度项目指南 2026年项目指南 关于征集2026年度地球科学领域重大项目立项领域建议的通告",
-          "publishedDate": null,
-          "markersFound": [
-            "项目指南",
-            "申请"
-          ],
-          "markerStatus": "partial",
-          "parsedItemCount": 0,
-          "discoveries": [],
-          "parserHealthy": true
+          "status": "fetch_error",
+          "error": "fetch failed"
         },
         {
           "id": "nsfc-2026-preliminary-review",
           "url": "https://www.nsfc.gov.cn/p1/3381/2822/122579.html",
           "parser": "manual-notice-page",
           "accessMode": "public",
-          "status": "reachable",
-          "httpStatus": 200,
-          "title": "业务资讯 关于公布2026年度国家自然科学基金项目申请初审结果的通告",
-          "publishedDate": "2026-04-29",
-          "markersFound": [
-            "初审结果",
-            "不予受理",
-            "复审申请",
-            "6月5日前"
-          ],
-          "markerStatus": "complete",
-          "parsedItemCount": 3,
-          "discoveries": [
-            {
-              "kind": "preliminaryReviewMetrics",
-              "year": 2026,
-              "applicationsReceived": 470561,
-              "applicationsInitialAccepted": 469427,
-              "applicationsInitialNotAccepted": 1134,
-              "sourceId": "nsfc-2026-preliminary-review"
-            },
-            {
-              "kind": "preliminaryRecheckDeadline",
-              "year": 2026,
-              "deadline": "2026-05-15T16:00:00+08:00",
-              "sourceId": "nsfc-2026-preliminary-review"
-            },
-            {
-              "kind": "preliminaryRecheckResultBy",
-              "year": 2026,
-              "date": "2026-06-05",
-              "qualifier": "on_or_before",
-              "sourceId": "nsfc-2026-preliminary-review"
-            }
-          ],
-          "parserHealthy": true
+          "status": "fetch_error",
+          "error": "fetch failed"
         },
         {
           "id": "nsfc-review-results",
           "url": "https://www.nsfc.gov.cn/p1/3381/2824/66854.html",
           "parser": "manual-notice-page",
           "accessMode": "public",
-          "status": "reachable",
-          "httpStatus": 200,
-          "title": "项目指南 关于2024年国家自然科学基金集中接收申请项目评审结果的通告",
-          "publishedDate": "2024-08-23",
-          "markersFound": [
-            "评审结果",
-            "复审申请",
-            "查询"
-          ],
-          "markerStatus": "complete",
-          "parsedItemCount": 4,
-          "discoveries": [
-            {
-              "kind": "reviewResultMetrics",
-              "year": 2024,
-              "applicationsReceived": 384564,
-              "applicationsAcceptedAfterReview": 383126,
-              "fundedProjectTypeCount": null,
-              "fundedProjectsAnnounced": null,
-              "sourceId": "nsfc-review-results"
-            },
-            {
-              "kind": "reviewResultQueryOpen",
-              "year": 2024,
-              "date": "2024-08-23",
-              "sourceId": "nsfc-review-results"
-            },
-            {
-              "kind": "reviewResultEmailWindow",
-              "year": 2024,
-              "start": "2024-08-23",
-              "end": "2024-08-26",
-              "sourceId": "nsfc-review-results"
-            },
-            {
-              "kind": "fundingDecisionRecheckWindow",
-              "year": 2024,
-              "start": "2024-08-23",
-              "end": "2024-09-06T16:00:00+08:00",
-              "sourceId": "nsfc-review-results"
-            }
-          ],
-          "parserHealthy": true
+          "status": "fetch_error",
+          "error": "fetch failed"
         },
         {
           "id": "nsfc-2025-preliminary-review",
           "url": "https://www.nsfc.gov.cn/p1/3381/2824/79211.html",
           "parser": "manual-notice-page",
           "accessMode": "public",
-          "status": "reachable",
-          "httpStatus": 200,
-          "title": "项目指南 关于公布2025年度国家自然科学基金项目申请初审结果的通告",
-          "publishedDate": "2025-04-29",
-          "markersFound": [
-            "初审结果",
-            "不予受理",
-            "复审申请",
-            "5月15日16时前"
-          ],
-          "markerStatus": "complete",
-          "parsedItemCount": 2,
-          "discoveries": [
-            {
-              "kind": "preliminaryReviewMetrics",
-              "year": 2025,
-              "applicationsReceived": 433426,
-              "applicationsInitialAccepted": 432429,
-              "applicationsInitialNotAccepted": 997,
-              "sourceId": "nsfc-2025-preliminary-review"
-            },
-            {
-              "kind": "preliminaryRecheckDeadline",
-              "year": 2025,
-              "deadline": "2025-05-15T16:00:00+08:00",
-              "sourceId": "nsfc-2025-preliminary-review"
-            }
-          ],
-          "parserHealthy": true
+          "status": "fetch_error",
+          "error": "fetch failed"
         },
         {
           "id": "nsfc-2025-review-results",
           "url": "https://www.nsfc.gov.cn/p1/3381/2824/94026.html",
           "parser": "manual-notice-page",
           "accessMode": "public",
-          "status": "reachable",
-          "httpStatus": 200,
-          "title": "项目指南 关于2025年国家自然科学基金集中接收申请项目评审结果的通告",
-          "publishedDate": "2025-08-27",
-          "markersFound": [
-            "评审结果",
-            "复审申请",
-            "查询",
-            "53159项"
-          ],
-          "markerStatus": "complete",
-          "parsedItemCount": 4,
-          "discoveries": [
-            {
-              "kind": "reviewResultMetrics",
-              "year": 2025,
-              "applicationsReceived": 433426,
-              "applicationsAcceptedAfterReview": 432434,
-              "fundedProjectTypeCount": 10,
-              "fundedProjectsAnnounced": 53159,
-              "sourceId": "nsfc-2025-review-results"
-            },
-            {
-              "kind": "reviewResultQueryOpen",
-              "year": 2025,
-              "date": "2025-08-27",
-              "sourceId": "nsfc-2025-review-results"
-            },
-            {
-              "kind": "reviewResultEmailWindow",
-              "year": 2025,
-              "start": "2025-08-27",
-              "end": "2025-08-29",
-              "sourceId": "nsfc-2025-review-results"
-            },
-            {
-              "kind": "fundingDecisionRecheckWindow",
-              "year": 2025,
-              "start": "2025-08-27",
-              "end": "2025-09-15T16:00:00+08:00",
-              "sourceId": "nsfc-2025-review-results"
-            }
-          ],
-          "parserHealthy": true
+          "status": "fetch_error",
+          "error": "fetch failed"
         },
         {
           "id": "nsfc-2023-performance-report",
           "url": "https://www.nsfc.gov.cn/Portals/0/fj/fj20241227_01.pdf",
           "parser": "nsfc-performance-report",
           "accessMode": "public",
-          "status": "reachable",
-          "httpStatus": 200,
-          "title": "",
-          "publishedDate": null,
-          "markersFound": [],
-          "markerStatus": "partial",
-          "parsedItemCount": 1,
-          "discoveries": [
-            {
-              "kind": "reviewResultPublishedFromPerformanceReport",
-              "year": 2023,
-              "date": "2023-08-24",
-              "sourceId": "nsfc-2023-performance-report"
-            }
-          ],
-          "parserHealthy": true
+          "status": "fetch_error",
+          "error": "fetch failed"
         },
         {
           "id": "nsfc-2022-performance-report",
           "url": "https://www.nsfc.gov.cn/Portals/0/fj/fj20230605_01.pdf",
           "parser": "nsfc-performance-report",
           "accessMode": "public",
-          "status": "reachable",
-          "httpStatus": 200,
-          "title": "",
-          "publishedDate": null,
-          "markersFound": [],
-          "markerStatus": "partial",
-          "parsedItemCount": 1,
-          "discoveries": [
-            {
-              "kind": "reviewResultPublishedFromPerformanceReport",
-              "year": 2022,
-              "date": "2022-09-08",
-              "sourceId": "nsfc-2022-performance-report"
-            }
-          ],
-          "parserHealthy": true
+          "status": "fetch_error",
+          "error": "fetch failed"
         },
         {
           "id": "nsfc-2021-performance-report",
           "url": "https://www.nsfc.gov.cn/Portals/0/fj/fj20220413_01.pdf",
           "parser": "nsfc-performance-report",
           "accessMode": "public",
-          "status": "reachable",
-          "httpStatus": 200,
-          "title": "",
-          "publishedDate": null,
-          "markersFound": [],
-          "markerStatus": "partial",
-          "parsedItemCount": 1,
-          "discoveries": [
-            {
-              "kind": "reviewResultPublishedFromPerformanceReport",
-              "year": 2021,
-              "date": "2021-08-17",
-              "sourceId": "nsfc-2021-performance-report"
-            }
-          ],
-          "parserHealthy": true
+          "status": "fetch_error",
+          "error": "fetch failed"
         },
         {
           "id": "nsfc-2025-application-and-final-report",
           "url": "https://www.nsfc.gov.cn/p1/3381/2824/66780.html",
           "parser": "manual-notice-page",
           "accessMode": "public",
-          "status": "reachable",
-          "httpStatus": 200,
-          "title": "项目指南 关于2025年度国家自然科学基金项目申请与结题等有关事项的通告",
-          "publishedDate": "2025-01-13",
-          "markersFound": [
-            "集中接收",
-            "项目类型",
-            "初审结果",
-            "结题",
-            "进展报告",
-            "年度管理报告",
-            "包干制"
-          ],
-          "markerStatus": "complete",
-          "parsedItemCount": 6,
-          "discoveries": [
-            {
-              "kind": "applicationWindow",
-              "year": 2025,
-              "start": "2025-03-01",
-              "end": "2025-03-20T16:00:00+08:00",
-              "projectTypes": [
-                "面上项目",
-                "重点项目",
-                "重点国际（地区）合作研究项目",
-                "青年科学基金项目",
-                "地区科学基金项目",
-                "优秀青年科学基金项目",
-                "国家杰出青年科学基金项目（含延续资助项目",
-                "下同）",
-                "创新研究群体项目",
-                "卓越研究群体项目（原基础科学中心项目）",
-                "外国学者研究基金项目",
-                "合作创新研究团队项目",
-                "数学天元基金项目",
-                "国家重大科研仪器研制项目（自由申请）",
-                "部分联合基金项目和部分重大研究计划项目"
-              ],
-              "sourceId": "nsfc-2025-application-and-final-report"
-            },
-            {
-              "kind": "preliminaryReviewPlan",
-              "year": 2025,
-              "date": "2025-04-29",
-              "qualifier": "on_or_before",
-              "sourceId": "nsfc-2025-application-and-final-report"
-            },
-            {
-              "kind": "progressReportDeadline",
-              "year": 2025,
-              "deadline": "2025-01-15",
-              "sourceId": "nsfc-2025-application-and-final-report"
-            },
-            {
-              "kind": "finalReportOnlineDeadline",
-              "year": 2025,
-              "deadline": "2025-02-24T16:00:00+08:00",
-              "sourceId": "nsfc-2025-application-and-final-report"
-            },
-            {
-              "kind": "finalReportPaperDeadline",
-              "year": 2025,
-              "deadline": "2025-03-10",
-              "sourceId": "nsfc-2025-application-and-final-report"
-            },
-            {
-              "kind": "annualManagementReportWindow",
-              "year": 2025,
-              "start": "2025-04-01",
-              "end": "2025-04-15T16:00:00+08:00",
-              "sourceId": "nsfc-2025-application-and-final-report"
-            }
-          ],
-          "parserHealthy": true
+          "status": "fetch_error",
+          "error": "fetch failed"
         }
       ]
     }
